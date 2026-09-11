@@ -165,25 +165,31 @@ img{ max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: clamp(8px, 2vw, 20px);
+}
+.wrap.nav-inner{
+  padding-left: clamp(14px, 3vw, 64px);
+  padding-right: clamp(14px, 3vw, 64px);
 }
 
 .brand{
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
-  font-size: 1.05rem;
+  font-size: clamp(0.85rem, 0.6rem + 0.8vw, 1.05rem);
   letter-spacing: 0.1px;
   display: flex;
   flex-direction: column;
   line-height: 1.15;
   color: var(--black);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .brand small{
   font-family: 'Inter', sans-serif;
   font-weight: 500;
-  font-size: 0.65rem;
+  font-size: clamp(0.56rem, 0.45rem + 0.3vw, 0.65rem);
   color: var(--muted);
-  letter-spacing: 0.6px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
@@ -204,16 +210,17 @@ img{ max-width: 100%; display: block; }
 
 .main-nav ul{
   display: flex;
-  gap: 6px;
+  gap: clamp(0px, 0.6vw, 6px);
   list-style: none;
   margin: 0; padding: 0;
 }
 .main-nav a{
   display: inline-block;
-  font-size: 0.88rem;
+  font-size: clamp(0.78rem, 0.65rem + 0.4vw, 0.88rem);
   font-weight: 600;
   color: var(--black);
-  padding: 10px 16px;
+  padding: 10px clamp(8px, 1.2vw, 16px);
+  white-space: nowrap;
   transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 .main-nav a:hover{ background: rgba(0,0,0,0.06); }
@@ -227,10 +234,11 @@ img{ max-width: 100%; display: block; }
   border: 2px solid var(--black);
   background: var(--black);
   color: var(--yellow);
-  padding: 11px 22px;
-  font-size: 0.85rem;
+  padding: 11px clamp(14px, 2vw, 22px);
+  font-size: clamp(0.76rem, 0.65rem + 0.3vw, 0.85rem);
   font-weight: 700;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 .header-cta:hover{ transform: scale(1.04); }
@@ -523,7 +531,7 @@ footer{
   .gallery-item.wide{ grid-column: span 2; }
 }
 
-@media (max-width: 720px){
+@media (max-width: 1120px){
   .topbar-inner{ font-size: 0.72rem; justify-content: center; }
   .topbar-inner > span:first-child{ display: none; }
   .topbar-contacts a, .topbar .dot{ white-space: nowrap; }
