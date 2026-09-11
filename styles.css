@@ -389,11 +389,14 @@ section{ padding: 100px 0; }
 
 /* ---------- services ---------- */
 .services-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 22px;
 }
 .service-card{
+  flex: 1 1 240px;
+  max-width: 340px;
   background: var(--paper);
   border: 1px solid var(--line);
   padding: 30px 26px;
