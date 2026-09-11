@@ -152,6 +152,17 @@ img{ max-width: 100%; display: block; }
 }
 .topbar-contacts{ display: flex; align-items: center; gap: 10px; }
 .topbar-contacts a{ color: var(--yellow); font-weight: 600; }
+
+.tel-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.icon-phone{
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
 .topbar .dot{ color: rgba(255,255,255,0.4); }
 
 .main-nav-bar{
