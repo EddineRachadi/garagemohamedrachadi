@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://site-garage-mohamed-rachadi-pere-ra.vercel.app/sitemap.xml
+Sitemap: https://garagemohamedrachadi.vercel.app/sitemap.xml
