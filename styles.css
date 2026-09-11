@@ -462,11 +462,14 @@ section{ padding: 100px 0; }
 
 /* ---------- why us ---------- */
 .why-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 22px;
 }
 .why-card{
+  flex: 1 1 260px;
+  max-width: 360px;
   background: var(--paper);
   border: 1px solid var(--line);
   border-top: 4px solid var(--yellow);
