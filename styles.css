@@ -523,6 +523,30 @@ footer{
   color: rgba(255,255,255,0.6);
   border-top: 1px solid rgba(255,255,255,0.12);
 }
+.footer-text{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.back-to-top{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  margin-left: auto;
+  background: var(--yellow);
+  color: var(--black);
+  border-radius: 50%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.back-to-top:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(251,218,1,0.25);
+}
+.back-to-top svg{ width: 18px; height: 18px; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 880px){
