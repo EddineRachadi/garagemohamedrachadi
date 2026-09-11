@@ -32,15 +32,61 @@ window.addEventListener('scroll', () => {
   lastScrollY = currentScrollY;
 }, { passive: true });
 
-// Hero slideshow
+// Hero slideshow — cycles background image, title and mini description per service
+const heroServices = [
+  { title: 'Redressage de <span class="text-accent">carrosserie</span>', sub: "Remise en forme des tôles déformées après un choc, sans altérer la structure du véhicule." },
+  { title: 'Masticage et <span class="text-accent">préparation des surfaces</span>', sub: "Un ponçage et un mastiquage soignés pour une surface parfaitement lisse avant peinture." },
+  { title: 'Peinture <span class="text-accent">complète et partielle</span>', sub: "Application d'une peinture teintée à l'identique, sur une pièce ou sur l'ensemble de la carrosserie." },
+  { title: 'Rénovation après <span class="text-accent">accident ou rayures</span>', sub: "Réparation des dommages visibles pour retrouver une carrosserie nette et uniforme." },
+  { title: 'Polissage et <span class="text-accent">finitions esthétiques</span>', sub: "Un travail de finition qui redonne de l'éclat à la peinture et aux surfaces traitées." },
+  { title: 'Réparation des <span class="text-accent">pare-chocs</span>', sub: "Remise en état ou remplacement des éléments endommagés de la carrosserie." },
+  { title: 'Remise en état <span class="text-accent">avant vente</span>', sub: "Un véhicule présenté sous son meilleur jour, prêt pour une inspection ou une vente." }
+];
+
 const heroSlides = document.querySelectorAll('#hero-slides .hero-slide');
-if (heroSlides.length > 1) {
-  let activeSlide = 0;
-  setInterval(() => {
-    heroSlides[activeSlide].classList.remove('is-active');
-    activeSlide = (activeSlide + 1) % heroSlides.length;
-    heroSlides[activeSlide].classList.add('is-active');
+const heroTitle = document.getElementById('hero-title');
+const heroSub = document.getElementById('hero-sub');
+const heroDots = document.querySelectorAll('#hero-dots .hero-dot');
+let heroIndex = 0;
+let heroTimer = null;
+
+function showHeroSlide(nextIndex) {
+  if (nextIndex === heroIndex) return;
+
+  heroSlides[heroIndex].classList.remove('is-active');
+  heroSlides[nextIndex].classList.add('is-active');
+  heroDots[heroIndex].classList.remove('is-active');
+  heroDots[nextIndex].classList.add('is-active');
+
+  heroTitle.classList.add('hero-text-out');
+  heroSub.classList.add('hero-text-out');
+
+  setTimeout(() => {
+    const service = heroServices[nextIndex];
+    heroTitle.innerHTML = service.title;
+    heroSub.textContent = service.sub;
+    heroTitle.classList.remove('hero-text-out');
+    heroSub.classList.remove('hero-text-out');
+  }, 350);
+
+  heroIndex = nextIndex;
+}
+
+function startHeroAutoplay() {
+  clearInterval(heroTimer);
+  heroTimer = setInterval(() => {
+    showHeroSlide((heroIndex + 1) % heroSlides.length);
   }, 6000);
+}
+
+if (heroSlides.length > 1 && heroTitle && heroSub) {
+  heroDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      showHeroSlide(Number(dot.dataset.slide));
+      startHeroAutoplay();
+    });
+  });
+  startHeroAutoplay();
 }
 
 // Active nav link highlighting
